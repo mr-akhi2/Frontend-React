@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.main{
+  height: 80vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.Lcontainer{
+    width: 340px!important;
+    height: 250px!important;
+    border: 1px solid gray;
+    border-radius: 5px;
+    position: relative;
+    top: 10%;
+    left: 40%;
+}
+.Lcontainer h2{
+    text-align: center;
+    text-decoration: underline;
+    margin: 10px 0px;
+}
+.Lcontainer input{
+    width: 90%;
+    height: 40px;
+    margin: 10px;
+}
+
+/* varify */
+.container1{
+    border: 1px solid gray;
+    border-radius:5px;
+    height: 200px;
+    margin-top: 20px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    transition: all .5s;
+    position:absolute;
+    display: none;
+}
+.container1 h2{
+    text-align: center;
+    margin: 20px;
+    text-decoration: underline;
+}
+.inputsAll input{
+  height: 45px;
+  width: 90%;
+  margin: 15px;
+  font-size: 20px;
+  border-radius:2px;
+}
+
+#sub-btn{
+    width: 90%;
+    margin-left: 10px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    &:hover{
+        background: gray;
+    }
+}
+.inputs::-webkit-inner-spin-button{
+    display: none;
+}
