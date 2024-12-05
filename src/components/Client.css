@@ -1,25 +1,28 @@
 .Client {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  table {
-    margin: 0 auto;
-    border-collapse: collapse;
-    width: 80%;
-  }
-  
-  table, th, td {
-    border: 1px solid #e7a2a2;
-  }
-  
-  th, td {
-    padding: 12px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
+  text-align: center;
+  padding: 20px;
+}
+
+table {
+  margin: 20px auto; /* Center-align table */
+  border-collapse: collapse;
+  width: 100%; 
+  /* Adjust width as necessary */
+}
+
+table th{
+  background: rgb(0, 21, 255);
+}
+table, th, td {
+  border: 1px solid #840e0e; /* Softer border color */
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+}
+
+
+
   
   

@@ -18,6 +18,7 @@ function AddClient(){
         panCardNo: "",
         bankName: "",
         branchName: "",
+        Accoutno: "",
         ifscCode: "",
         agreeToTerms: false
     });
@@ -32,20 +33,25 @@ function AddClient(){
 
       const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("lastdatat",formData);
-
-        fetch('http://localhost:9001/Client',{
-          method:"POST",
-          headers:{
-            'Content-Type': 'application/json',
-          },body:JSON.stringify(formData)
-         }).then((res)=>{
-          return res.json()
-         }).then((data)=>{
-          console.log(data)
-         }).catch((error)=>{
-          console.log(error)
-         })
+        // console.log("lastdatat",formData);
+        if(formData.firstName.length!==0&&formData.lastName.length!==0&&formData.Accoutno.length!==0){
+          fetch('http://localhost:9001/Client',{
+            method:"POST",
+            headers:{
+              'Content-Type': 'application/json',
+            },body:JSON.stringify(formData)
+           }).then((res)=>{
+            return res.json()
+           }).then((data)=>{
+            console.log(data)
+           }).catch((error)=>{
+            console.log(error)
+           })
+          }
+        
+        else{
+          alert("please enter the required values")
+        }
       };
     return(
         <>
@@ -95,13 +101,17 @@ function AddClient(){
       <option>Delhi</option>
     </select>
   </div>
-  <div class="col-md-5">
+  <div class="col-md-4">
     <label for="inputZip" class="form-label">Addhaar No</label>
     <input type="text" class="form-control" id="aadharNo" name="aadharNo" value={formData.aadharNo} onChange={handleChange} placeholder=""/>
   </div>
-  <div class="col-md-5">
+  <div class="col-md-3">
     <label for="inputZip" class="form-label">Pan Card No</label>
     <input type="text" class="form-control" id="panCardNo" name="panCardNo" value={formData.panCardNo} onChange={handleChange} placeholder=""/>
+  </div>
+  <div class="col-md-3">
+    <label for="inputZip" class="form-label">Account no</label>
+    <input type="text" class="form-control" id="Accoutno" name="Accoutno" value={formData.Accoutno} onChange={handleChange} placeholder=""/>
   </div>
   <div class="col-md-4">
     <label for="inputZip" class="form-label">Bank Name</label>

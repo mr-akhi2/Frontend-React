@@ -51,7 +51,7 @@ function submitdata(e){
 
   return (
     <div className="container mt-4">
-      <h3 className="text-center">NBCC Claim Form</h3>
+      <h3 className="text-center">Insurance Claim Form</h3>
       <form>
         {/* Policy Holder Information */}
         <div className="mb-3">

@@ -10,6 +10,7 @@ import Report from "./ReportG";
 import Claim from "./Claim";
 import Billing from './billing';
 import AddClient from "./AddClient"
+import Claimstatus from "./Claimstatus"
 
 const Navbar = () => {
   return (
@@ -50,11 +51,11 @@ const Navbar = () => {
         </li>
         <li class="nav-item dropdown">
           <Link class="nav-link dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Cliams
+            Insurance
           </Link>
           <ul class="dropdown-menu">
             <li><Link class="dropdown-item" to="/claim">ADD Claim</Link></li>
-            <li><Link class="dropdown-item" to="/claimStatus">Claim Status</Link></li>
+            <li><Link class="dropdown-item" to="/Clients">Claim Status</Link></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -76,6 +77,8 @@ const Navbar = () => {
     <Route path="/claim" element={<Claim/>}/>
     <Route path="/bill" element={<Billing/>}/>
     <Route path="/AddClient" element={<AddClient/>}/>
+    <Route path="/Clients" element={<Claimstatus/>}/>
+
     <Route path="/Dashboard" element={<DashBoard/>}/>
    </Routes>
     </div>
