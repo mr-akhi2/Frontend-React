@@ -1,7 +1,7 @@
 
 import React, { useRef } from "react";
-import { useForm } from "react-hook-form";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { toast } from "react-toastify";
 
 const Claim = () => {
   const input1=useRef();
@@ -36,7 +36,21 @@ function submitdata(e){
            ifscCode: ifscCode1.current.value,
       })
      })
-     alert("your data inserted successfully!")
+     toast.success("your data inserted successfully!");
+           input1.current.value=''
+           cardId1.current.value=''
+            policyNumber1.current.value=''
+            insuranceCompany1.current.value=''
+            hospitalName1.current.value=''
+           providerName1.current.value=''
+           address1.current.value=''
+           claimAmount1.current.value=''
+           bankname1.current.value=''
+           bankAccountNumber1.current.value=''
+           ifscCode1.current.value=''
+     }
+     else{
+      toast.error("please enter fill the required data")
      }
   }
 

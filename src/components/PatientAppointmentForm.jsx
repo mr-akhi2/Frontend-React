@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { toast } from "react-toastify";
 
 const AppointmentForm = () => {
   const [formData, setFormData] = useState({
@@ -17,8 +18,8 @@ const AppointmentForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
-    alert("Appointment Submitted Successfully!");
+    // console.log("Form Data:", formData);
+    toast.success("Appointment Submitted Successfully!");
   };
 
   return (

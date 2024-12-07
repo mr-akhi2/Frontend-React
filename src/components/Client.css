@@ -1,6 +1,7 @@
 .Client {
   text-align: center;
   padding: 20px;
+  overflow: auto;
 }
 
 table {
@@ -21,6 +22,8 @@ th, td {
   padding: 12px;
   text-align: center;
 }
+
+
 
 
 

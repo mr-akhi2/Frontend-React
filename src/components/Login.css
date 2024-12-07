@@ -5,50 +5,62 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 .main{
-  height: 80vh;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
+background: url('../images//login_bg.jpg')no-repeat;
+background-position:center;
+background-size: cover;
+height: 680px;
+width: 100%;
+justify-content: center;
+align-items: center;
+padding-top: 1px;
+overflow: hidden;
 }
 
 .Lcontainer{
     width: 340px!important;
     height: 250px!important;
-    border: 1px solid gray;
+    border: 1px solid rgb(255, 249, 249);
     border-radius: 5px;
     position: relative;
     top: 10%;
     left: 40%;
+    border-radius: 10px;
+    background: #ffffff7a;
 }
 .Lcontainer h2{
     text-align: center;
     text-decoration: underline;
     margin: 10px 0px;
+    font-weight: 700;
 }
 .Lcontainer input{
     width: 90%;
     height: 40px;
     margin: 10px;
+    color:black;
+    font-weight: 600;
 }
 
 /* varify */
 .container1{
-    border: 1px solid gray;
+    border: 1px solid rgb(250, 247, 247);
     border-radius:5px;
-    height: 200px;
+    height: 230px;
     margin-top: 20px;
-    position: absolute;
+    position: relative;
     top: 40%;
     left: 50%;
     transform:translate(-50%,-50%);
     transition: all .5s;
     position:absolute;
     display: none;
+    background: #ffffff5b;
 }
 .container1 h2{
     text-align: center;
     margin: 20px;
     text-decoration: underline;
+    color: rgb(0, 0, 0);
 }
 .inputsAll input{
   height: 45px;
@@ -56,6 +68,11 @@
   margin: 15px;
   font-size: 20px;
   border-radius:2px;
+  color: black;
+}
+#emailspan{
+    color: rgb(0, 0, 0);
+    margin-left: 15px;
 }
 
 #sub-btn{
@@ -64,10 +81,50 @@
     height: 40px;
     border-radius: 5px;
     outline: none;
+    color: black;
     &:hover{
         background: gray;
     }
 }
 .inputs::-webkit-inner-spin-button{
     display: none;
+}
+
+#headh2{
+  margin-top: 30px;
+  font-style: italic;
+  text-decoration: underline;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  /* background: white; */
+}
+#headp{
+    font-size: 26px;
+    font-style: italic;
+  font-weight: 700;
+    color: rgb(255, 255, 255);
+    /* background: white; */
+}
+
+@media screen and (max-width:844px) {
+    .Lcontainer{
+        top: 10%;
+        left: 20%;
+    }
+    .container1{
+        top:50%;
+        width: 340px;
+    }
+    
+}
+@media screen and (max-width:478px) {
+    .Lcontainer{
+        top: 5%;
+        left: 5%;
+    }
+    .container1{
+        height: 230px !important;
+        width: 340px;
+    }
+    
 }

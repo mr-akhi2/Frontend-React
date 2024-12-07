@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Client.css";
+import { toast } from "react-toastify";
 
 
 const Clients = [
@@ -14,10 +15,11 @@ function Client() {
     const api1=fetch('http://localhost:9001/Client/').then((res)=>{
       return res.json()
     }).then((data)=>{
-      console.log('this is data',data);
+      // console.log('this is data',data);
       setClients(data);
+      // toast.success('data inserted successfully!')
     }).catch((error)=>{
-      console.log(error)
+      toast.error(error)
     })
   },[])
 

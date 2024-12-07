@@ -4,7 +4,7 @@ import "./Dashboard.css"
 const DashBoard = () => {
   return (
     <>
-      <center>
+      <center id='centerDashboard'>
         <h1 className="heading">MD India Health Insurance TPA PVT.Ltd</h1>
         <h3 className="paragraph">
           We have change our Toll Free Number here Toll Free Number for

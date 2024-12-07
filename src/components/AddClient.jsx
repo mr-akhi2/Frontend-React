@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 
   
 
 function AddClient(){
-    const [formData,setFormData] = useState({
-        firstName: "",
+  const initial={
+    firstName: "",
         lastName: "",
         email: "",
         mobileNo: "",
@@ -21,7 +22,8 @@ function AddClient(){
         Accoutno: "",
         ifscCode: "",
         agreeToTerms: false
-    });
+    }
+    const [formData,setFormData] = useState(initial);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -43,14 +45,15 @@ function AddClient(){
            }).then((res)=>{
             return res.json()
            }).then((data)=>{
-            console.log(data)
+            toast.success('data inserter successsfully!');
            }).catch((error)=>{
-            console.log(error)
+            toast.error(error)
            })
+
+           setFormData(initial)
           }
-        
         else{
-          alert("please enter the required values")
+          toast.error("please enter the required values")
         }
       };
     return(
