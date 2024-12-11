@@ -8,7 +8,7 @@
 background: url('../images//login_bg.jpg')no-repeat;
 background-position:center;
 background-size: cover;
-height: 680px;
+height: 100vh;
 width: 100%;
 justify-content: center;
 align-items: center;
@@ -18,7 +18,7 @@ overflow: hidden;
 
 .Lcontainer{
     width: 340px!important;
-    height: 250px!important;
+    height: 300px!important;
     border: 1px solid rgb(255, 249, 249);
     border-radius: 5px;
     position: relative;
@@ -26,6 +26,7 @@ overflow: hidden;
     left: 40%;
     border-radius: 10px;
     background: #ffffff7a;
+    padding-left: 15px;
 }
 .Lcontainer h2{
     text-align: center;
@@ -40,12 +41,17 @@ overflow: hidden;
     color:black;
     font-weight: 600;
 }
+#selectitm{
+    width: 90%;
+    margin: 10px;
+    height: 35px;
+}
 
 /* varify */
 .container1{
     border: 1px solid rgb(250, 247, 247);
     border-radius:5px;
-    height: 230px;
+    height: 260px;
     margin-top: 20px;
     position: relative;
     top: 40%;
@@ -78,6 +84,7 @@ overflow: hidden;
 #sub-btn{
     width: 90%;
     margin-left: 10px;
+    margin-top: 10px;
     height: 40px;
     border-radius: 5px;
     outline: none;
@@ -104,6 +111,12 @@ overflow: hidden;
   font-weight: 700;
     color: rgb(255, 255, 255);
     /* background: white; */
+}
+#changeemail{
+    color: rgb(5, 51, 255);
+    margin-left: 20px;
+    font-size: 15px;
+    text-decoration: none;
 }
 
 @media screen and (max-width:844px) {

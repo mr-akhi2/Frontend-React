@@ -2,11 +2,15 @@ import React, { useRef, useState } from 'react';
 import "./Login.css";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Login = ({ setlogin }) => {
+const Login = ({ setlogin,setadmin }) => {
   const [sendEmail, setSendEmail] = useState('');
-  const [generatedOTP, setGeneratedOTP] = useState(null); // Use state to persist OTP
+  const [semail, setsemail] = useState('email');
+  const [generatedOTP, setGeneratedOTP] = useState(null); 
+  const [sub_value,setsub_value] = useState('Send OTP');
+  const[userType,setuserType]=useState('Client')// Use state to persist OTP
   const navigate = useNavigate();
 
   const cont1 = useRef();
@@ -15,8 +19,15 @@ const Login = ({ setlogin }) => {
   const Aname = useRef();
   const input1 = useRef();
 
+  const changeemailval=()=>{
+    let dn=cont1.current;
+    let dm=cont2.current;
+    dm.style.display = "none";
+    dn.style.display = "block";
+  }
+
   // OTP Submission Handler
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     const enteredOTP = input1.current.value.trim();
 
     if (!enteredOTP) {
@@ -30,6 +41,7 @@ const Login = ({ setlogin }) => {
         setlogin(true);
         toast.dismiss();
         navigate("/home");
+      userdetails()
       }, 1500);
     } else {
       toast.error('Invalid OTP');
@@ -37,23 +49,50 @@ const Login = ({ setlogin }) => {
     }
   };
 
+ 
+ const  selectedChange=(e)=>{
+  setuserType(e.target.value);
+  if(userType=="Admin"){
+    setsub_value("Send OTP");
+  setsemail('email')
+   }
+   else{
+  setsub_value("Submit");
+  setsemail('password')
+   }
+  }
+
   // Send OTP Handler
   const sendOtp = async () => {
     const name = Aname.current.value.trim();
     const emailValue = email.current.value.trim();
     const c1 = cont1.current;
     const c2 = cont2.current;
-
+    const pattern = /^[a-zA-Z0-9_.±]+@gmail.com$/;
     if (!name) {
       toast.error("Enter your Name!");
       return;
     }
-
-    if (!emailValue || emailValue.length < 12) {
+    if (!emailValue.match(pattern)) {
       toast.error("Invalid Email");
       return;
     }
-
+    if(userType==="Admin"){
+      setadmin(true);
+    }
+    else{
+      setadmin(false);
+    }
+    if(name==="tpamanagement" && emailValue==="MARI@gmail.com"&&userType==="Admin"){
+      setadmin(true);
+      toast.success("login success!")
+      setTimeout(() => {
+        setlogin(true);
+        toast.dismiss();
+        navigate("/home");
+      }, 1500);
+    }
+    else if(emailValue.match(pattern)&&userType!=="Admin"){
     const otp = Math.floor(1000 + Math.random() * 9000); // Generate a 4-digit OTP
     setGeneratedOTP(otp); // Save the OTP in state
 
@@ -81,8 +120,51 @@ const Login = ({ setlogin }) => {
       console.error("Error sending OTP:", error);
       toast.error("Failed to send OTP. Try again.");
     }
+  }
+  else{
+    toast.error("your username and password is invalid!")
+  }
   };
 
+  // this is for user information
+
+  const userdetails=async()=>{
+    const dname = Aname.current.value.trim();
+    const dbmail= email.current.value.trim();
+    let d=new Date();
+    let date=d.toLocaleDateString();
+    let hr=d.getHours();
+    let min=d.getMinutes();
+    let sec=d.getSeconds();
+    let time=`${hr}:${min}:${sec},${date}`;
+    console.log(time)
+  
+    try {
+      let userdata = await fetch('https://mongo-connect.onrender.com/user', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: dname,
+          email: dbmail,
+          type:userType,
+          time:time
+        }),
+      });
+    
+      if (!userdata.ok) {
+        console.error('HTTP Error:', userdata.status, userdata.statusText);
+        return;
+      }
+    
+      let response = await userdata.json();
+      console.log('User data saved:', response);
+    } catch (error) {
+      console.error('Fetch error:', error.message);
+    }
+    
+  }
   return (
     <>
       <div className="main">
@@ -93,8 +175,12 @@ const Login = ({ setlogin }) => {
         <div className="Lcontainer" ref={cont1}>
           <h2>Log in here</h2>
           <input type='text' placeholder='Enter your name' ref={Aname} />
-          <input type='email' placeholder='Enter your Email' ref={email} />
-          <input type="submit" value="Send OTP" onClick={sendOtp} />
+          <input type={semail} placeholder='Enter your Email or Password' ref={email} />
+          <select name="select" id="selectitm" onChange={(e)=>(selectedChange(e))}>
+            <option value="Client" selected>Client</option>
+            <option value="Admin" >Admin</option>
+          </select>
+          <input type="submit" value={sub_value} onClick={sendOtp} />
         </div>
         <div>
           <div className="container1" id="container1" ref={cont2}>
@@ -107,8 +193,9 @@ const Login = ({ setlogin }) => {
                 ref={input1}
                 placeholder="Enter Your OTP"
               />
+              <Link href="/" id="changeemail" onClick={changeemailval}>change email ?</Link>
             </div>
-            <input type="submit" value="Submit" id="sub-btn" onClick={handleSubmit} />
+            <input type="submit" value="submit" id="sub-btn" onClick={handleSubmit} />
           </div>
         </div>
       </div>

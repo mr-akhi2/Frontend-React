@@ -1,0 +1,14 @@
+#cnt{
+    margin: 0px auto;
+
+}
+#cnt h4{
+ text-align: center;
+}
+
+#tmp{
+    display: flex;
+    justify-content: space-around;
+    /* width: 600px; */
+    border: 2px solid red;
+}

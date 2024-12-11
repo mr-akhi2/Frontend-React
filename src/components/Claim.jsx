@@ -18,22 +18,22 @@ const Claim = () => {
 function submitdata(e){
   e.preventDefault();
   if(input1.current.value!==""&&cardId1.current.value!==""&&bankAccountNumber1.current.value!==""){
-    let fetchapi=fetch('http://localhost:9002/Claim_list',{
+    let fetchapi=fetch('/add',{
       method : "POST",
       headers:{
         'Content-Type': 'application/json',
       },body:JSON.stringify({
           name: input1.current.value,
            cardId: cardId1.current.value,
-           policyNumber: policyNumber1.current.value,
-           insuranceCompany: insuranceCompany1.current.value,
-           hospitalName: hospitalName1.current.value,
-           providerName: providerName1.current.value,
-           address: address1.current.value,
-           claimAmount: claimAmount1.current.value,
-           bankName: bankname1.current.value,
-           bankAccountNumber: bankAccountNumber1.current.value,
-           ifscCode: ifscCode1.current.value,
+          //  policyNumber: policyNumber1.current.value,
+          //  insuranceCompany: insuranceCompany1.current.value,
+          //  hospitalName: hospitalName1.current.value,
+          //  providerName: providerName1.current.value,
+          //  address: address1.current.value,
+          //  claimAmount: claimAmount1.current.value,
+          //  bankName: bankname1.current.value,
+          //  bankAccountNumber: bankAccountNumber1.current.value,
+          //  ifscCode: ifscCode1.current.value,
       })
      })
      toast.success("your data inserted successfully!");
